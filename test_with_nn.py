@@ -1,7 +1,11 @@
 import numpy as np
-from tensorflow.keras.models import load_model
+from tensorflow.keras.models import load_model # type: ignore
 import itertools
 import argparse
+import warnings
+import os
+
+warnings.filterwarnings('ignore', category=Warning)
 
 class Pinatas:
     def __init__(self, list):
@@ -73,13 +77,13 @@ for i in range(len(x), 7):
 
 index_list = []
 for i in range(0, len(pin.list)):
-    print(x[i])
+    #print(x[i])
     np_x = np.array(x)
-    print(np_x.reshape(1, -1))
+    #print(np_x.reshape(1, -1))
     index = predict(model, np_x.reshape(1, -1))
-    print(index)
+    #print(index)
     index = int(np.round(index))
-    print(index)
+    #print(index)
     pin.remove(index)
     del(x[index])
     x.append(0)
@@ -96,15 +100,15 @@ for i in range(len(x), 7):
 index_list = []
 for i in range(0, len(pin_copy.list)):
     if (len(pin_copy.list)==3):
-        print(pin_copy.list, pin_copy.result)
+        #print(pin_copy.list, pin_copy.result)
         break
-    print(x[i])
+    #print(x[i])
     np_x = np.array(x)
-    print(np_x.reshape(1, -1))
+    #print(np_x.reshape(1, -1))
     index = predict(model, np_x.reshape(1, -1))
-    print(index)
+    #print(index)
     index = int(np.round(index))
-    print(index)
+    #print(index)
     pin_copy.remove(index)
     del(x[index])
     x.append(0)
@@ -125,13 +129,15 @@ for index in index_perm:
         max_ord_2 = ord
 index_list = index_list + max_ord_2
 
-print("Start: ", startlist)
-print("NN")
+os.system('cls')
+
+#print("Start: ", startlist)
+print("NN Method Result: ")
 print(pin.result)
-print(index_list_2)
-print("Full")
+#print(index_list_2)
+print("Full Permutation Method: ")
 print(max_res)
-print(max_ord)
-print("Combined")
+#print(max_ord)
+print("Combined Method: ")
 print(pin_copy.result + max_res_2)
-print(index_list)
+#print(index_list)
