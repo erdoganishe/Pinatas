@@ -1,7 +1,6 @@
 # Pinatas
 
 
-Please don`t use main branchm use default instead.
 
 # Realistion:
 
